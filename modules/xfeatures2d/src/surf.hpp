@@ -64,6 +64,8 @@ public:
     bool upright;
 };
 
+#ifdef HAVE_OPENCL
+
 class SURF_OCL
 {
 public:
@@ -146,28 +148,7 @@ protected:
     int status;
 };
 
-/*
-template<typename _Tp> void copyVectorToUMat(const std::vector<_Tp>& v, UMat& um)
-{
-    if(v.empty())
-        um.release();
-    else
-        Mat(1, (int)(v.size()*sizeof(v[0])), CV_8U, (void*)&v[0]).copyTo(um);
-}
-
-template<typename _Tp> void copyUMatToVector(const UMat& um, std::vector<_Tp>& v)
-{
-    if(um.empty())
-        v.clear();
-    else
-    {
-        size_t sz = um.total()*um.elemSize();
-        CV_Assert(um.isContinuous() && (sz % sizeof(_Tp) == 0));
-        v.resize(sz/sizeof(_Tp));
-        Mat m(um.size(), um.type(), &v[0]);
-        um.copyTo(m);
-    }
-}*/
+#endif // HAVE_OPENCL
 
 }
 }

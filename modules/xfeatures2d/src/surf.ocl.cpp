@@ -47,6 +47,9 @@
 
 #include <cstdio>
 #include <sstream>
+
+#ifdef HAVE_OPENCL
+
 #include "opencl_kernels_xfeatures2d.hpp"
 
 namespace cv
@@ -461,3 +464,4 @@ bool SURF_OCL::calcOrientation(UMat &keypoints)
 }
 }
 
+#endif // HAVE_OPENCL
