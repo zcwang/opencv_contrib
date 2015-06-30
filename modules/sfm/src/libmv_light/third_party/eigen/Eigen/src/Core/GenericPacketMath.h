@@ -325,4 +325,3 @@ template<> inline std::complex<double> pmul(const std::complex<double>& a, const
 } // end namespace Eigen
 
 #endif // EIGEN_GENERIC_PACKET_MATH_H
-

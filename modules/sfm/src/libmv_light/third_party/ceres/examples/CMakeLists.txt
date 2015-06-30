@@ -67,4 +67,3 @@ IF (${GFLAGS})
                  fields_of_experts.cc)
   TARGET_LINK_LIBRARIES(denoising ceres)
 ENDIF (${GFLAGS})
-

@@ -125,4 +125,3 @@ private:
 
 //vim: ai ts=4 sts=4 et sw=4
 #endif // EIGEN_NUMERICAL_DIFF_H
-

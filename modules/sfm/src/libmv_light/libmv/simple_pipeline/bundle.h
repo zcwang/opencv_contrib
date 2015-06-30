@@ -144,4 +144,3 @@ void ProjectiveBundle(const Tracks &tracks,
 }  // namespace libmv
 
 #endif   // LIBMV_SIMPLE_PIPELINE_BUNDLE_H
-

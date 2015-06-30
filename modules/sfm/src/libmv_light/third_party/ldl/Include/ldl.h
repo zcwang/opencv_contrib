@@ -101,4 +101,3 @@ UF_long ldl_l_valid_matrix ( UF_long n, UF_long Ap [ ], UF_long Ai [ ]) ;
 #define LDL_SUB_VERSION 0
 #define LDL_SUBSUB_VERSION 1
 #define LDL_VERSION LDL_VERSION_CODE(LDL_MAIN_VERSION,LDL_SUB_VERSION)
-

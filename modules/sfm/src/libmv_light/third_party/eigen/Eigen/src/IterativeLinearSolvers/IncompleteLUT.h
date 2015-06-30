@@ -463,4 +463,3 @@ struct solve_retval<IncompleteLUT<_MatrixType>, Rhs>
 } // end namespace Eigen
 
 #endif // EIGEN_INCOMPLETE_LUT_H
-
