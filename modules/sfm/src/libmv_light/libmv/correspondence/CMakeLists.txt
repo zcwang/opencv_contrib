@@ -1,5 +1,7 @@
 # define the source files
-SET(CORRESPONDENCE_SRC matches.cc)
+SET(CORRESPONDENCE_SRC feature_matching.cc
+                       matches.cc
+                       nRobustViewMatching.cc)
 
 # define the header files (make the headers appear in IDEs.)
 FILE(GLOB CORRESPONDENCE_HDRS *.h)

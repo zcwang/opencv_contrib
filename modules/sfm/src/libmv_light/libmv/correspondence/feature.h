@@ -21,7 +21,6 @@
 #ifndef LIBMV_CORRESPONDENCE_FEATURE_H_
 #define LIBMV_CORRESPONDENCE_FEATURE_H_
 
-//#include <opencv2/features2d/features2d.hpp>
 #include <opencv2/core.hpp>
 
 #include "libmv/numeric/numeric.h"
