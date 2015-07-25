@@ -124,7 +124,7 @@ bool nRobustViewMatching::MatchData(const string & dataA, const string & dataB)
 
   Matches matches;
   //TODO(pmoulon) make FindCandidatesMatches a parameter.
-  FindCandidateMatches(m_ViewData[dataA],
+  FindCandidateMatches_Ratio(m_ViewData[dataA],
                        m_ViewData[dataB],
                        &matches);
   Matches consistent_matches;
