@@ -15,6 +15,6 @@ FILE(GLOB SIMPLE_PIPELINE_HDRS *.h)
 
 ADD_LIBRARY(simple_pipeline STATIC ${SIMPLE_PIPELINE_SRC} ${SIMPLE_PIPELINE_HDRS})
 
-TARGET_LINK_LIBRARIES(simple_pipeline V3D multiview ceres)
+TARGET_LINK_LIBRARIES(simple_pipeline V3D multiview ${CERES_LIBRARIES})
 
 LIBMV_INSTALL_LIB(simple_pipeline)
