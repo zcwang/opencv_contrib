@@ -327,7 +327,7 @@ inline ::tensorflow::DataType TensorProto::dtype() const {
   return static_cast< ::tensorflow::DataType >(dtype_);
 }
 inline void TensorProto::set_dtype(::tensorflow::DataType value) {
-  
+
   dtype_ = value;
   // @@protoc_insertion_point(field_set:tensorflow.TensorProto.dtype)
 }
@@ -346,7 +346,7 @@ inline const ::tensorflow::TensorShapeProto& TensorProto::tensor_shape() const {
                          : *::tensorflow::TensorShapeProto::internal_default_instance();
 }
 inline ::tensorflow::TensorShapeProto* TensorProto::mutable_tensor_shape() {
-  
+
   if (tensor_shape_ == NULL) {
     _slow_mutable_tensor_shape();
   }
@@ -355,7 +355,7 @@ inline ::tensorflow::TensorShapeProto* TensorProto::mutable_tensor_shape() {
 }
 inline ::tensorflow::TensorShapeProto* TensorProto::release_tensor_shape() {
   // @@protoc_insertion_point(field_release:tensorflow.TensorProto.tensor_shape)
-  
+
   if (GetArenaNoVirtual() != NULL) {
     return _slow_release_tensor_shape();
   } else {
@@ -374,9 +374,9 @@ inline  void TensorProto::set_allocated_tensor_shape(::tensorflow::TensorShapePr
   }
   tensor_shape_ = tensor_shape;
   if (tensor_shape) {
-    
+
   } else {
-    
+
   }
   // @@protoc_insertion_point(field_set_allocated:tensorflow.TensorProto.tensor_shape)
 }
@@ -390,7 +390,7 @@ inline ::google::protobuf::int32 TensorProto::version_number() const {
   return version_number_;
 }
 inline void TensorProto::set_version_number(::google::protobuf::int32 value) {
-  
+
   version_number_ = value;
   // @@protoc_insertion_point(field_set:tensorflow.TensorProto.version_number)
 }
@@ -404,45 +404,45 @@ inline const ::std::string& TensorProto::tensor_content() const {
   return tensor_content_.Get(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void TensorProto::set_tensor_content(const ::std::string& value) {
-  
+
   tensor_content_.Set(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value, GetArenaNoVirtual());
   // @@protoc_insertion_point(field_set:tensorflow.TensorProto.tensor_content)
 }
 inline void TensorProto::set_tensor_content(const char* value) {
-  
+
   tensor_content_.Set(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
               GetArenaNoVirtual());
   // @@protoc_insertion_point(field_set_char:tensorflow.TensorProto.tensor_content)
 }
 inline void TensorProto::set_tensor_content(const void* value,
     size_t size) {
-  
+
   tensor_content_.Set(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(
       reinterpret_cast<const char*>(value), size), GetArenaNoVirtual());
   // @@protoc_insertion_point(field_set_pointer:tensorflow.TensorProto.tensor_content)
 }
 inline ::std::string* TensorProto::mutable_tensor_content() {
-  
+
   // @@protoc_insertion_point(field_mutable:tensorflow.TensorProto.tensor_content)
   return tensor_content_.Mutable(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
 }
 inline ::std::string* TensorProto::release_tensor_content() {
   // @@protoc_insertion_point(field_release:tensorflow.TensorProto.tensor_content)
-  
+
   return tensor_content_.Release(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
 }
 inline ::std::string* TensorProto::unsafe_arena_release_tensor_content() {
   // @@protoc_insertion_point(field_unsafe_arena_release:tensorflow.TensorProto.tensor_content)
   GOOGLE_DCHECK(GetArenaNoVirtual() != NULL);
-  
+
   return tensor_content_.UnsafeArenaRelease(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       GetArenaNoVirtual());
 }
 inline void TensorProto::set_allocated_tensor_content(::std::string* tensor_content) {
   if (tensor_content != NULL) {
-    
+
   } else {
-    
+
   }
   tensor_content_.SetAllocated(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), tensor_content,
       GetArenaNoVirtual());
@@ -452,9 +452,9 @@ inline void TensorProto::unsafe_arena_set_allocated_tensor_content(
     ::std::string* tensor_content) {
   GOOGLE_DCHECK(GetArenaNoVirtual() != NULL);
   if (tensor_content != NULL) {
-    
+
   } else {
-    
+
   }
   tensor_content_.UnsafeArenaSetAllocated(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       tensor_content, GetArenaNoVirtual());

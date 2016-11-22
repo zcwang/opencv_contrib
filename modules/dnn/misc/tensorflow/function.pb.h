@@ -730,45 +730,45 @@ inline const ::std::string& FunctionDef_Node::op() const {
   return op_.Get(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void FunctionDef_Node::set_op(const ::std::string& value) {
-  
+
   op_.Set(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value, GetArenaNoVirtual());
   // @@protoc_insertion_point(field_set:tensorflow.FunctionDef.Node.op)
 }
 inline void FunctionDef_Node::set_op(const char* value) {
-  
+
   op_.Set(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
               GetArenaNoVirtual());
   // @@protoc_insertion_point(field_set_char:tensorflow.FunctionDef.Node.op)
 }
 inline void FunctionDef_Node::set_op(const char* value,
     size_t size) {
-  
+
   op_.Set(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(
       reinterpret_cast<const char*>(value), size), GetArenaNoVirtual());
   // @@protoc_insertion_point(field_set_pointer:tensorflow.FunctionDef.Node.op)
 }
 inline ::std::string* FunctionDef_Node::mutable_op() {
-  
+
   // @@protoc_insertion_point(field_mutable:tensorflow.FunctionDef.Node.op)
   return op_.Mutable(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
 }
 inline ::std::string* FunctionDef_Node::release_op() {
   // @@protoc_insertion_point(field_release:tensorflow.FunctionDef.Node.op)
-  
+
   return op_.Release(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
 }
 inline ::std::string* FunctionDef_Node::unsafe_arena_release_op() {
   // @@protoc_insertion_point(field_unsafe_arena_release:tensorflow.FunctionDef.Node.op)
   GOOGLE_DCHECK(GetArenaNoVirtual() != NULL);
-  
+
   return op_.UnsafeArenaRelease(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       GetArenaNoVirtual());
 }
 inline void FunctionDef_Node::set_allocated_op(::std::string* op) {
   if (op != NULL) {
-    
+
   } else {
-    
+
   }
   op_.SetAllocated(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), op,
       GetArenaNoVirtual());
@@ -778,9 +778,9 @@ inline void FunctionDef_Node::unsafe_arena_set_allocated_op(
     ::std::string* op) {
   GOOGLE_DCHECK(GetArenaNoVirtual() != NULL);
   if (op != NULL) {
-    
+
   } else {
-    
+
   }
   op_.UnsafeArenaSetAllocated(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       op, GetArenaNoVirtual());
@@ -936,7 +936,7 @@ inline const ::tensorflow::OpDef& FunctionDef::signature() const {
                          : *::tensorflow::OpDef::internal_default_instance();
 }
 inline ::tensorflow::OpDef* FunctionDef::mutable_signature() {
-  
+
   if (signature_ == NULL) {
     _slow_mutable_signature();
   }
@@ -945,7 +945,7 @@ inline ::tensorflow::OpDef* FunctionDef::mutable_signature() {
 }
 inline ::tensorflow::OpDef* FunctionDef::release_signature() {
   // @@protoc_insertion_point(field_release:tensorflow.FunctionDef.signature)
-  
+
   if (GetArenaNoVirtual() != NULL) {
     return _slow_release_signature();
   } else {
@@ -964,9 +964,9 @@ inline  void FunctionDef::set_allocated_signature(::tensorflow::OpDef* signature
   }
   signature_ = signature;
   if (signature) {
-    
+
   } else {
-    
+
   }
   // @@protoc_insertion_point(field_set_allocated:tensorflow.FunctionDef.signature)
 }
@@ -1017,45 +1017,45 @@ inline const ::std::string& GradientDef::function_name() const {
   return function_name_.Get(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void GradientDef::set_function_name(const ::std::string& value) {
-  
+
   function_name_.Set(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value, GetArenaNoVirtual());
   // @@protoc_insertion_point(field_set:tensorflow.GradientDef.function_name)
 }
 inline void GradientDef::set_function_name(const char* value) {
-  
+
   function_name_.Set(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
               GetArenaNoVirtual());
   // @@protoc_insertion_point(field_set_char:tensorflow.GradientDef.function_name)
 }
 inline void GradientDef::set_function_name(const char* value,
     size_t size) {
-  
+
   function_name_.Set(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(
       reinterpret_cast<const char*>(value), size), GetArenaNoVirtual());
   // @@protoc_insertion_point(field_set_pointer:tensorflow.GradientDef.function_name)
 }
 inline ::std::string* GradientDef::mutable_function_name() {
-  
+
   // @@protoc_insertion_point(field_mutable:tensorflow.GradientDef.function_name)
   return function_name_.Mutable(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
 }
 inline ::std::string* GradientDef::release_function_name() {
   // @@protoc_insertion_point(field_release:tensorflow.GradientDef.function_name)
-  
+
   return function_name_.Release(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
 }
 inline ::std::string* GradientDef::unsafe_arena_release_function_name() {
   // @@protoc_insertion_point(field_unsafe_arena_release:tensorflow.GradientDef.function_name)
   GOOGLE_DCHECK(GetArenaNoVirtual() != NULL);
-  
+
   return function_name_.UnsafeArenaRelease(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       GetArenaNoVirtual());
 }
 inline void GradientDef::set_allocated_function_name(::std::string* function_name) {
   if (function_name != NULL) {
-    
+
   } else {
-    
+
   }
   function_name_.SetAllocated(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), function_name,
       GetArenaNoVirtual());
@@ -1065,9 +1065,9 @@ inline void GradientDef::unsafe_arena_set_allocated_function_name(
     ::std::string* function_name) {
   GOOGLE_DCHECK(GetArenaNoVirtual() != NULL);
   if (function_name != NULL) {
-    
+
   } else {
-    
+
   }
   function_name_.UnsafeArenaSetAllocated(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       function_name, GetArenaNoVirtual());
@@ -1083,45 +1083,45 @@ inline const ::std::string& GradientDef::gradient_func() const {
   return gradient_func_.Get(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void GradientDef::set_gradient_func(const ::std::string& value) {
-  
+
   gradient_func_.Set(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value, GetArenaNoVirtual());
   // @@protoc_insertion_point(field_set:tensorflow.GradientDef.gradient_func)
 }
 inline void GradientDef::set_gradient_func(const char* value) {
-  
+
   gradient_func_.Set(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
               GetArenaNoVirtual());
   // @@protoc_insertion_point(field_set_char:tensorflow.GradientDef.gradient_func)
 }
 inline void GradientDef::set_gradient_func(const char* value,
     size_t size) {
-  
+
   gradient_func_.Set(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(
       reinterpret_cast<const char*>(value), size), GetArenaNoVirtual());
   // @@protoc_insertion_point(field_set_pointer:tensorflow.GradientDef.gradient_func)
 }
 inline ::std::string* GradientDef::mutable_gradient_func() {
-  
+
   // @@protoc_insertion_point(field_mutable:tensorflow.GradientDef.gradient_func)
   return gradient_func_.Mutable(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
 }
 inline ::std::string* GradientDef::release_gradient_func() {
   // @@protoc_insertion_point(field_release:tensorflow.GradientDef.gradient_func)
-  
+
   return gradient_func_.Release(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
 }
 inline ::std::string* GradientDef::unsafe_arena_release_gradient_func() {
   // @@protoc_insertion_point(field_unsafe_arena_release:tensorflow.GradientDef.gradient_func)
   GOOGLE_DCHECK(GetArenaNoVirtual() != NULL);
-  
+
   return gradient_func_.UnsafeArenaRelease(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       GetArenaNoVirtual());
 }
 inline void GradientDef::set_allocated_gradient_func(::std::string* gradient_func) {
   if (gradient_func != NULL) {
-    
+
   } else {
-    
+
   }
   gradient_func_.SetAllocated(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), gradient_func,
       GetArenaNoVirtual());
@@ -1131,9 +1131,9 @@ inline void GradientDef::unsafe_arena_set_allocated_gradient_func(
     ::std::string* gradient_func) {
   GOOGLE_DCHECK(GetArenaNoVirtual() != NULL);
   if (gradient_func != NULL) {
-    
+
   } else {
-    
+
   }
   gradient_func_.UnsafeArenaSetAllocated(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       gradient_func, GetArenaNoVirtual());

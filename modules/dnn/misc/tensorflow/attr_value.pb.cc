@@ -2030,7 +2030,7 @@ void AttrValue::clear_shape() {
   if (!has_shape()) {
     clear_value();
     set_has_shape();
-    value_.shape_ = 
+    value_.shape_ =
       ::google::protobuf::Arena::CreateMessage< ::tensorflow::TensorShapeProto >(
       GetArenaNoVirtual());
   }
@@ -2062,7 +2062,7 @@ void AttrValue::set_allocated_shape(::tensorflow::TensorShapeProto* shape) {
       GetArenaNoVirtual()->Own(shape);
     } else if (GetArenaNoVirtual() !=
                ::google::protobuf::Arena::GetArena(shape)) {
-      ::tensorflow::TensorShapeProto* new_shape = 
+      ::tensorflow::TensorShapeProto* new_shape =
           ::google::protobuf::Arena::CreateMessage< ::tensorflow::TensorShapeProto >(
           GetArenaNoVirtual());
       new_shape->CopyFrom(*shape);
@@ -2118,7 +2118,7 @@ void AttrValue::clear_tensor() {
   if (!has_tensor()) {
     clear_value();
     set_has_tensor();
-    value_.tensor_ = 
+    value_.tensor_ =
       ::google::protobuf::Arena::CreateMessage< ::tensorflow::TensorProto >(
       GetArenaNoVirtual());
   }
@@ -2150,7 +2150,7 @@ void AttrValue::set_allocated_tensor(::tensorflow::TensorProto* tensor) {
       GetArenaNoVirtual()->Own(tensor);
     } else if (GetArenaNoVirtual() !=
                ::google::protobuf::Arena::GetArena(tensor)) {
-      ::tensorflow::TensorProto* new_tensor = 
+      ::tensorflow::TensorProto* new_tensor =
           ::google::protobuf::Arena::CreateMessage< ::tensorflow::TensorProto >(
           GetArenaNoVirtual());
       new_tensor->CopyFrom(*tensor);
@@ -2206,7 +2206,7 @@ void AttrValue::clear_list() {
   if (!has_list()) {
     clear_value();
     set_has_list();
-    value_.list_ = 
+    value_.list_ =
       ::google::protobuf::Arena::CreateMessage< ::tensorflow::AttrValue_ListValue >(
       GetArenaNoVirtual());
   }
@@ -2238,7 +2238,7 @@ void AttrValue::set_allocated_list(::tensorflow::AttrValue_ListValue* list) {
       GetArenaNoVirtual()->Own(list);
     } else if (GetArenaNoVirtual() !=
                ::google::protobuf::Arena::GetArena(list)) {
-      ::tensorflow::AttrValue_ListValue* new_list = 
+      ::tensorflow::AttrValue_ListValue* new_list =
           ::google::protobuf::Arena::CreateMessage< ::tensorflow::AttrValue_ListValue >(
           GetArenaNoVirtual());
       new_list->CopyFrom(*list);
@@ -2294,7 +2294,7 @@ void AttrValue::clear_func() {
   if (!has_func()) {
     clear_value();
     set_has_func();
-    value_.func_ = 
+    value_.func_ =
       ::google::protobuf::Arena::CreateMessage< ::tensorflow::NameAttrList >(
       GetArenaNoVirtual());
   }
@@ -2326,7 +2326,7 @@ void AttrValue::set_allocated_func(::tensorflow::NameAttrList* func) {
       GetArenaNoVirtual()->Own(func);
     } else if (GetArenaNoVirtual() !=
                ::google::protobuf::Arena::GetArena(func)) {
-      ::tensorflow::NameAttrList* new_func = 
+      ::tensorflow::NameAttrList* new_func =
           ::google::protobuf::Arena::CreateMessage< ::tensorflow::NameAttrList >(
           GetArenaNoVirtual());
       new_func->CopyFrom(*func);
@@ -2927,45 +2927,45 @@ const ::std::string& NameAttrList::name() const {
   return name_.Get(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void NameAttrList::set_name(const ::std::string& value) {
-  
+
   name_.Set(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value, GetArenaNoVirtual());
   // @@protoc_insertion_point(field_set:tensorflow.NameAttrList.name)
 }
 void NameAttrList::set_name(const char* value) {
-  
+
   name_.Set(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
               GetArenaNoVirtual());
   // @@protoc_insertion_point(field_set_char:tensorflow.NameAttrList.name)
 }
 void NameAttrList::set_name(const char* value,
     size_t size) {
-  
+
   name_.Set(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(
       reinterpret_cast<const char*>(value), size), GetArenaNoVirtual());
   // @@protoc_insertion_point(field_set_pointer:tensorflow.NameAttrList.name)
 }
 ::std::string* NameAttrList::mutable_name() {
-  
+
   // @@protoc_insertion_point(field_mutable:tensorflow.NameAttrList.name)
   return name_.Mutable(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
 }
 ::std::string* NameAttrList::release_name() {
   // @@protoc_insertion_point(field_release:tensorflow.NameAttrList.name)
-  
+
   return name_.Release(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
 }
 ::std::string* NameAttrList::unsafe_arena_release_name() {
   // @@protoc_insertion_point(field_unsafe_arena_release:tensorflow.NameAttrList.name)
   GOOGLE_DCHECK(GetArenaNoVirtual() != NULL);
-  
+
   return name_.UnsafeArenaRelease(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       GetArenaNoVirtual());
 }
 void NameAttrList::set_allocated_name(::std::string* name) {
   if (name != NULL) {
-    
+
   } else {
-    
+
   }
   name_.SetAllocated(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name,
       GetArenaNoVirtual());
@@ -2975,9 +2975,9 @@ void NameAttrList::unsafe_arena_set_allocated_name(
     ::std::string* name) {
   GOOGLE_DCHECK(GetArenaNoVirtual() != NULL);
   if (name != NULL) {
-    
+
   } else {
-    
+
   }
   name_.UnsafeArenaSetAllocated(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       name, GetArenaNoVirtual());

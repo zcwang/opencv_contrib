@@ -163,19 +163,19 @@ void TensorProto::_slow_mutable_tensor_shape() {
 }
 ::tensorflow::TensorShapeProto* TensorProto::unsafe_arena_release_tensor_shape() {
   // @@protoc_insertion_point(field_unsafe_arena_release:tensorflow.TensorProto.tensor_shape)
-  
+
   ::tensorflow::TensorShapeProto* temp = tensor_shape_;
   tensor_shape_ = NULL;
   return temp;
 }
 void TensorProto::_slow_set_allocated_tensor_shape(
     ::google::protobuf::Arena* message_arena, ::tensorflow::TensorShapeProto** tensor_shape) {
-    if (message_arena != NULL && 
+    if (message_arena != NULL &&
         ::google::protobuf::Arena::GetArena(*tensor_shape) == NULL) {
       message_arena->Own(*tensor_shape);
     } else if (message_arena !=
                ::google::protobuf::Arena::GetArena(*tensor_shape)) {
-      ::tensorflow::TensorShapeProto* new_tensor_shape = 
+      ::tensorflow::TensorShapeProto* new_tensor_shape =
             ::google::protobuf::Arena::CreateMessage< ::tensorflow::TensorShapeProto >(
             message_arena);
       new_tensor_shape->CopyFrom(**tensor_shape);
@@ -189,9 +189,9 @@ void TensorProto::unsafe_arena_set_allocated_tensor_shape(
   }
   tensor_shape_ = tensor_shape;
   if (tensor_shape) {
-    
+
   } else {
-    
+
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:tensorflow.TensorProto.tensor_shape)
 }
@@ -1155,7 +1155,7 @@ void TensorProto::clear_dtype() {
   return static_cast< ::tensorflow::DataType >(dtype_);
 }
 void TensorProto::set_dtype(::tensorflow::DataType value) {
-  
+
   dtype_ = value;
   // @@protoc_insertion_point(field_set:tensorflow.TensorProto.dtype)
 }
@@ -1174,7 +1174,7 @@ const ::tensorflow::TensorShapeProto& TensorProto::tensor_shape() const {
                          : *::tensorflow::TensorShapeProto::internal_default_instance();
 }
 ::tensorflow::TensorShapeProto* TensorProto::mutable_tensor_shape() {
-  
+
   if (tensor_shape_ == NULL) {
     _slow_mutable_tensor_shape();
   }
@@ -1183,7 +1183,7 @@ const ::tensorflow::TensorShapeProto& TensorProto::tensor_shape() const {
 }
 ::tensorflow::TensorShapeProto* TensorProto::release_tensor_shape() {
   // @@protoc_insertion_point(field_release:tensorflow.TensorProto.tensor_shape)
-  
+
   if (GetArenaNoVirtual() != NULL) {
     return _slow_release_tensor_shape();
   } else {
@@ -1202,9 +1202,9 @@ const ::tensorflow::TensorShapeProto& TensorProto::tensor_shape() const {
   }
   tensor_shape_ = tensor_shape;
   if (tensor_shape) {
-    
+
   } else {
-    
+
   }
   // @@protoc_insertion_point(field_set_allocated:tensorflow.TensorProto.tensor_shape)
 }
@@ -1218,7 +1218,7 @@ void TensorProto::clear_version_number() {
   return version_number_;
 }
 void TensorProto::set_version_number(::google::protobuf::int32 value) {
-  
+
   version_number_ = value;
   // @@protoc_insertion_point(field_set:tensorflow.TensorProto.version_number)
 }
@@ -1232,45 +1232,45 @@ const ::std::string& TensorProto::tensor_content() const {
   return tensor_content_.Get(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void TensorProto::set_tensor_content(const ::std::string& value) {
-  
+
   tensor_content_.Set(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value, GetArenaNoVirtual());
   // @@protoc_insertion_point(field_set:tensorflow.TensorProto.tensor_content)
 }
 void TensorProto::set_tensor_content(const char* value) {
-  
+
   tensor_content_.Set(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
               GetArenaNoVirtual());
   // @@protoc_insertion_point(field_set_char:tensorflow.TensorProto.tensor_content)
 }
 void TensorProto::set_tensor_content(const void* value,
     size_t size) {
-  
+
   tensor_content_.Set(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(
       reinterpret_cast<const char*>(value), size), GetArenaNoVirtual());
   // @@protoc_insertion_point(field_set_pointer:tensorflow.TensorProto.tensor_content)
 }
 ::std::string* TensorProto::mutable_tensor_content() {
-  
+
   // @@protoc_insertion_point(field_mutable:tensorflow.TensorProto.tensor_content)
   return tensor_content_.Mutable(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
 }
 ::std::string* TensorProto::release_tensor_content() {
   // @@protoc_insertion_point(field_release:tensorflow.TensorProto.tensor_content)
-  
+
   return tensor_content_.Release(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), GetArenaNoVirtual());
 }
 ::std::string* TensorProto::unsafe_arena_release_tensor_content() {
   // @@protoc_insertion_point(field_unsafe_arena_release:tensorflow.TensorProto.tensor_content)
   GOOGLE_DCHECK(GetArenaNoVirtual() != NULL);
-  
+
   return tensor_content_.UnsafeArenaRelease(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       GetArenaNoVirtual());
 }
 void TensorProto::set_allocated_tensor_content(::std::string* tensor_content) {
   if (tensor_content != NULL) {
-    
+
   } else {
-    
+
   }
   tensor_content_.SetAllocated(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), tensor_content,
       GetArenaNoVirtual());
@@ -1280,9 +1280,9 @@ void TensorProto::unsafe_arena_set_allocated_tensor_content(
     ::std::string* tensor_content) {
   GOOGLE_DCHECK(GetArenaNoVirtual() != NULL);
   if (tensor_content != NULL) {
-    
+
   } else {
-    
+
   }
   tensor_content_.UnsafeArenaSetAllocated(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       tensor_content, GetArenaNoVirtual());

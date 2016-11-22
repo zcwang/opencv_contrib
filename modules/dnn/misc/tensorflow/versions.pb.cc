@@ -511,7 +511,7 @@ void VersionDef::clear_producer() {
   return producer_;
 }
 void VersionDef::set_producer(::google::protobuf::int32 value) {
-  
+
   producer_ = value;
   // @@protoc_insertion_point(field_set:tensorflow.VersionDef.producer)
 }
@@ -525,7 +525,7 @@ void VersionDef::clear_min_consumer() {
   return min_consumer_;
 }
 void VersionDef::set_min_consumer(::google::protobuf::int32 value) {
-  
+
   min_consumer_ = value;
   // @@protoc_insertion_point(field_set:tensorflow.VersionDef.min_consumer)
 }
