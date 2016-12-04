@@ -61,7 +61,7 @@ namespace ft
 
     The function creates kernel usable for latter fuzzy image processing.
     */
-	CV_EXPORTS_AS(createKernel1) void createKernel(InputArray A, InputArray B, OutputArray kernel, const int chn);
+    CV_EXPORTS_AS(createKernel1) void createKernel(InputArray A, InputArray B, OutputArray kernel, const int chn);
 
     /** @brief Creates kernel from general functions.
     @param function Function type could be one of the following:

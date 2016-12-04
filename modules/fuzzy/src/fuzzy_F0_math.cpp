@@ -45,7 +45,7 @@ using namespace cv;
 
 void ft::FT02D_components(InputArray matrix, InputArray kernel, OutputArray components, InputArray mask)
 {
-	CV_Assert(matrix.channels() == kernel.channels() && mask.channels() == 1);
+    CV_Assert(matrix.channels() == kernel.channels() && mask.channels() == 1);
 
     int radiusX = (kernel.cols() - 1) / 2;
     int radiusY = (kernel.rows() - 1) / 2;
@@ -79,10 +79,10 @@ void ft::FT02D_components(InputArray matrix, InputArray kernel, OutputArray comp
             Mat numerator;
             multiply(roiImage, kernelMasked, numerator, 1, CV_32F);
 
-			Scalar value;
-			divide(sum(numerator), sum(kernelMasked), value, 1, CV_32F);
+            Scalar value;
+            divide(sum(numerator), sum(kernelMasked), value, 1, CV_32F);
 
-			componentsMat.row(o).col(i).setTo(value);
+            componentsMat.row(o).col(i).setTo(value);
         }
     }
 }
@@ -98,7 +98,7 @@ void ft::FT02D_inverseFT(InputArray components, InputArray kernel, OutputArray o
 {
     CV_Assert(components.channels() == 1 && kernel.channels() == 1);
 
-	Mat componentsMat = components.getMat();
+    Mat componentsMat = components.getMat();
 
     int radiusX = (kernel.cols() - 1) / 2;
     int radiusY = (kernel.rows() - 1) / 2;
@@ -117,14 +117,14 @@ void ft::FT02D_inverseFT(InputArray components, InputArray kernel, OutputArray o
             int centerY = (o * radiusY) + radiusY;
             Rect area(centerX - radiusX, centerY - radiusY, kernel.cols(), kernel.rows());
 
-			float component = componentsMat.at<float>(o, i);
+            float component = componentsMat.at<float>(o, i);
 
-			Mat inverse;
-			multiply(kernel, component, inverse, 1, CV_32F);
+            Mat inverse;
+            multiply(kernel, component, inverse, 1, CV_32F);
 
-			Mat roiOutput(outputZeroes, area);
-			add(roiOutput, inverse, roiOutput);
-		}
+            Mat roiOutput(outputZeroes, area);
+            add(roiOutput, inverse, roiOutput);
+        }
     }
 
     outputZeroes(Rect(radiusX, radiusY, width, height)).copyTo(output);
@@ -132,61 +132,61 @@ void ft::FT02D_inverseFT(InputArray components, InputArray kernel, OutputArray o
 
 void ft::FT02D_process(InputArray matrix, InputArray kernel, OutputArray output)
 {
-	Mat mask = Mat::ones(matrix.size(), CV_8U);
+    Mat mask = Mat::ones(matrix.size(), CV_8U);
 
-	ft::FT02D_process(matrix, kernel, output, mask);
+    ft::FT02D_process(matrix, kernel, output, mask);
 }
 
 void ft::FT02D_process(InputArray matrix, InputArray kernel, OutputArray output, InputArray mask)
 {
-	CV_Assert(matrix.channels() == kernel.channels() && mask.channels() == 1);
+    CV_Assert(matrix.channels() == kernel.channels() && mask.channels() == 1);
 
-	int radiusX = (kernel.cols() - 1) / 2;
-	int radiusY = (kernel.rows() - 1) / 2;
-	int An = matrix.cols() / radiusX + 1;
-	int Bn = matrix.rows() / radiusY + 1;
-	int outputWidthPadded = radiusX + matrix.cols() + kernel.cols();
-	int outputHeightPadded = radiusY + matrix.rows() + kernel.rows();
+    int radiusX = (kernel.cols() - 1) / 2;
+    int radiusY = (kernel.rows() - 1) / 2;
+    int An = matrix.cols() / radiusX + 1;
+    int Bn = matrix.rows() / radiusY + 1;
+    int outputWidthPadded = radiusX + matrix.cols() + kernel.cols();
+    int outputHeightPadded = radiusY + matrix.rows() + kernel.rows();
 
-	Mat matrixPadded;
-	Mat maskPadded;
+    Mat matrixPadded;
+    Mat maskPadded;
 
-	output.create(matrix.size(), CV_MAKETYPE(CV_32F, matrix.channels()));
+    output.create(matrix.size(), CV_MAKETYPE(CV_32F, matrix.channels()));
 
-	Mat outputZeroes(outputHeightPadded, outputWidthPadded, output.type(), Scalar(0));
+    Mat outputZeroes(outputHeightPadded, outputWidthPadded, output.type(), Scalar(0));
 
-	copyMakeBorder(matrix, matrixPadded, radiusY, kernel.rows(), radiusX, kernel.cols(), BORDER_CONSTANT, Scalar(0));
-	copyMakeBorder(mask, maskPadded, radiusY, kernel.rows(), radiusX, kernel.cols(), BORDER_CONSTANT, Scalar(0));
+    copyMakeBorder(matrix, matrixPadded, radiusY, kernel.rows(), radiusX, kernel.cols(), BORDER_CONSTANT, Scalar(0));
+    copyMakeBorder(mask, maskPadded, radiusY, kernel.rows(), radiusX, kernel.cols(), BORDER_CONSTANT, Scalar(0));
 
-	for (int i = 0; i < An; i++)
-	{
-		for (int o = 0; o < Bn; o++)
-		{
-			int centerX = (i * radiusX) + radiusX;
-			int centerY = (o * radiusY) + radiusY;
-			Rect area(centerX - radiusX, centerY - radiusY, kernel.cols(), kernel.rows());
+    for (int i = 0; i < An; i++)
+    {
+        for (int o = 0; o < Bn; o++)
+        {
+            int centerX = (i * radiusX) + radiusX;
+            int centerY = (o * radiusY) + radiusY;
+            Rect area(centerX - radiusX, centerY - radiusY, kernel.cols(), kernel.rows());
 
-			Mat roiMatrix(matrixPadded, area);
-			Mat roiMask(maskPadded, area);
-			Mat kernelMasked;
+            Mat roiMatrix(matrixPadded, area);
+            Mat roiMask(maskPadded, area);
+            Mat kernelMasked;
 
-			kernel.copyTo(kernelMasked, roiMask);
+            kernel.copyTo(kernelMasked, roiMask);
 
-			Mat numerator;
-			multiply(roiMatrix, kernelMasked, numerator, 1, CV_32F);
+            Mat numerator;
+            multiply(roiMatrix, kernelMasked, numerator, 1, CV_32F);
 
-			Scalar component;
-			divide(sum(numerator), sum(kernelMasked), component, 1, CV_32F);
+            Scalar component;
+            divide(sum(numerator), sum(kernelMasked), component, 1, CV_32F);
 
-			Mat inverse;
-			multiply(kernel, component, inverse, 1, CV_32F);
+            Mat inverse;
+            multiply(kernel, component, inverse, 1, CV_32F);
 
-			Mat roiOutput(outputZeroes, area);
-			add(roiOutput, inverse, roiOutput);
-		}
-	}
+            Mat roiOutput(outputZeroes, area);
+            add(roiOutput, inverse, roiOutput);
+        }
+    }
 
-	outputZeroes(Rect(radiusX, radiusY, matrix.cols(), matrix.rows())).copyTo(output);
+    outputZeroes(Rect(radiusX, radiusY, matrix.cols(), matrix.rows())).copyTo(output);
 }
 
 int ft::FT02D_iteration(InputArray matrix, InputArray kernel, OutputArray output, InputArray mask, OutputArray maskOutput, bool firstStop)
@@ -201,22 +201,22 @@ int ft::FT02D_iteration(InputArray matrix, InputArray kernel, OutputArray output
     int outputHeightPadded = radiusY + matrix.rows() + kernel.rows();
     int undefinedComponents = 0;
 
-	output.create(matrix.size(), CV_MAKETYPE(CV_32F, matrix.channels()));
-	output.setTo(0);
+    output.create(matrix.size(), CV_MAKETYPE(CV_32F, matrix.channels()));
+    output.setTo(0);
 
-	if (maskOutput.needed())
-	{
-		maskOutput.create(mask.rows(), mask.cols(), CV_8UC1);
-		maskOutput.setTo(1);
-	}
+    if (maskOutput.needed())
+    {
+        maskOutput.create(mask.rows(), mask.cols(), CV_8UC1);
+        maskOutput.setTo(1);
+    }
 
-	Mat matrixOutputMat = Mat::zeros(outputHeightPadded, outputWidthPadded, CV_MAKETYPE(CV_32F, matrix.channels()));
+    Mat matrixOutputMat = Mat::zeros(outputHeightPadded, outputWidthPadded, CV_MAKETYPE(CV_32F, matrix.channels()));
     Mat maskOutputMat = Mat::ones(outputHeightPadded, outputWidthPadded, CV_8UC1);
 
-	Mat matrixPadded;
-	Mat maskPadded;
+    Mat matrixPadded;
+    Mat maskPadded;
 
-	copyMakeBorder(matrix, matrixPadded, radiusY, kernel.rows(), radiusX, kernel.cols(), BORDER_CONSTANT, Scalar(0));
+    copyMakeBorder(matrix, matrixPadded, radiusY, kernel.rows(), radiusX, kernel.cols(), BORDER_CONSTANT, Scalar(0));
     copyMakeBorder(mask, maskPadded, radiusY, kernel.rows(), radiusX, kernel.cols(), BORDER_CONSTANT, Scalar(0));
 
     for (int i = 0; i < An; i++)
@@ -243,7 +243,7 @@ int ft::FT02D_iteration(InputArray matrix, InputArray kernel, OutputArray output
                 if (firstStop)
                 {
                     matrixOutputMat = matrixPadded(Rect(radiusX, radiusY, matrix.cols(), matrix.rows()));
-					maskOutputMat = maskPadded(Rect(radiusX, radiusY, matrix.cols(), matrix.rows()));
+                    maskOutputMat = maskPadded(Rect(radiusX, radiusY, matrix.cols(), matrix.rows()));
 
                     return -1;
                 }
@@ -269,12 +269,12 @@ int ft::FT02D_iteration(InputArray matrix, InputArray kernel, OutputArray output
         }
     }
 
-	matrixOutputMat(Rect(radiusX, radiusY, matrix.cols(), matrix.rows())).copyTo(output);
+    matrixOutputMat(Rect(radiusX, radiusY, matrix.cols(), matrix.rows())).copyTo(output);
 
-	if (maskOutput.needed())
-	{
-		maskOutputMat(Rect(radiusX, radiusY, matrix.cols(), matrix.rows())).copyTo(maskOutput);
-	}
+    if (maskOutput.needed())
+    {
+        maskOutputMat(Rect(radiusX, radiusY, matrix.cols(), matrix.rows())).copyTo(maskOutput);
+    }
 
     return undefinedComponents;
 }

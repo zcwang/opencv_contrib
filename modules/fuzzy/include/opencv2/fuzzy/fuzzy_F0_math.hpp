@@ -64,7 +64,7 @@ namespace ft
     @note
         F-transform technique is described in paper @cite Perf:FT.
      */
-	CV_EXPORTS_AS(FT02D_components1) void FT02D_components(InputArray matrix, InputArray kernel, OutputArray components, InputArray mask);
+    CV_EXPORTS_AS(FT02D_components1) void FT02D_components(InputArray matrix, InputArray kernel, OutputArray components, InputArray mask);
 
     /** @brief Computes components of the array using direct F0-transform.
     @param matrix Input array.
@@ -98,16 +98,16 @@ namespace ft
 
     This function computes F-transfrom and inverse F-transfotm in one step. It is fully sufficient and optimized for **Mat**.
     */
-	CV_EXPORTS_AS(FT02D_process1) void FT02D_process(InputArray matrix, InputArray kernel, OutputArray output, InputArray mask);
+    CV_EXPORTS_AS(FT02D_process1) void FT02D_process(InputArray matrix, InputArray kernel, OutputArray output, InputArray mask);
 
-	/** @brief Computes F0-transfrom and inverse F0-transfrom at once.
-	@param matrix Input matrix.
-	@param kernel Kernel used for processing. Function **createKernel** can be used.
-	@param output Output 32-bit array.
+    /** @brief Computes F0-transfrom and inverse F0-transfrom at once.
+    @param matrix Input matrix.
+    @param kernel Kernel used for processing. Function **createKernel** can be used.
+    @param output Output 32-bit array.
 
-	This function computes F-transfrom and inverse F-transfotm in one step. It is fully sufficient and optimized for **Mat**.
-	*/
-	CV_EXPORTS_W void FT02D_process(InputArray matrix, InputArray kernel, OutputArray output);
+    This function computes F-transfrom and inverse F-transfotm in one step. It is fully sufficient and optimized for **Mat**.
+    */
+    CV_EXPORTS_W void FT02D_process(InputArray matrix, InputArray kernel, OutputArray output);
 
     /** @brief Computes F0-transfrom and inverse F0-transfrom at once and return state.
     @param matrix Input matrix.

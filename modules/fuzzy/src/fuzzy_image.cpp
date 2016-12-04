@@ -98,8 +98,8 @@ void ft::inpaint(InputArray image, InputArray mask, OutputArray output, int radi
         Mat kernel;
         ft::createKernel(function, radius, kernel, image.channels());
 
-		Mat processingInput;
-		image.getMat().convertTo(processingInput, CV_32F);
+        Mat processingInput;
+        image.getMat().convertTo(processingInput, CV_32F);
 
         ft::FT02D_process(image, kernel, output, mask);
 
@@ -112,7 +112,7 @@ void ft::inpaint(InputArray image, InputArray mask, OutputArray output, int radi
         int currentRadius = radius;
 
         Mat processingInput;
-		image.getMat().convertTo(processingInput, CV_32F);
+        image.getMat().convertTo(processingInput, CV_32F);
 
         do
         {
@@ -135,10 +135,10 @@ void ft::inpaint(InputArray image, InputArray mask, OutputArray output, int radi
         int currentRadius = radius;
 
         Mat processingInput;
-		image.getMat().convertTo(processingInput, CV_32F);
+        image.getMat().convertTo(processingInput, CV_32F);
 
-		Mat processingMask;
-		mask.copyTo(processingMask);
+        Mat processingMask;
+        mask.copyTo(processingMask);
 
         do
         {
@@ -155,7 +155,7 @@ void ft::inpaint(InputArray image, InputArray mask, OutputArray output, int radi
         }
         while(state != 0);
 
-		processingInput.copyTo(output);
+        processingInput.copyTo(output);
     }
 }
 
