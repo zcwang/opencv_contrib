@@ -33,12 +33,13 @@
  *  or tort(including negligence or otherwise) arising in any way out of
  *  the use of this software, even if advised of the possibility of such damage.
  */
-/*
-
-Ridge Detection filter
-Authors : Venkatesh Vijaykumar, Kushal Vyas
-Ref:  @stackoverflow link
- */
+/*********************************************************
+*				Ridge Detection filter
+*This code implements a ridge detection filter based on hessian matrix
+* Authors : Venkatesh Vijaykumar, Kushal Vyas
+* Ref:  @stackoverflow link
+*
+*/
 
 #include "precomp.hpp"
 #include "opencv2/imgproc.hpp"
@@ -47,7 +48,14 @@ Ref:  @stackoverflow link
 
 namespace cv{
 	namespace ximgproc{
-		
+		class RidgeDetectionFilterImpl : public RidgeDetectionFilter{
+			public:
+				RidgeDetectionFilter() {}
+				virtual void getRidges(InputArray img, OutputArray out);
+			private:
+				virtual void getSobelX(InputArray img, OutputArray out);
+				virtual void getSobelY(InputArray img, OutputArray out);
+		};
 	}
 }
 
