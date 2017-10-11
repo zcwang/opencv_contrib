@@ -56,6 +56,16 @@ namespace cv{
 				virtual void getSobelX(InputArray img, OutputArray out);
 				virtual void getSobelY(InputArray img, OutputArray out);
 		};
+
+		void RidgeDetectionFilterImpl::getSobelX(InputArray _img, OutputArray _out){
+			_out.create(_img.size(), CV_32F);
+			Sobel(_img, _out, CV_32F, 1, 0, 3);
+		}
+
+		void RidgeDetectionFilterImpl::getSobelY(InputArray _img, OutputArray _out){
+			_out.create(_img.size(), CV_32F);
+			Sobel(_img, _out, CV_32F, 0, 1, 3);
+		}
 	}
 }
 
