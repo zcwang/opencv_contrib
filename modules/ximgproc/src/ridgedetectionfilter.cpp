@@ -50,21 +50,59 @@ namespace cv{
 	namespace ximgproc{
 		class RidgeDetectionFilterImpl : public RidgeDetectionFilter{
 			public:
-				RidgeDetectionFilter() {}
-				virtual void getRidges(InputArray img, OutputArray out);
+				RidgeDetectionFilter();
+				virtual void getRidges(InputArray &img, OutputArray &out);
 			private:
-				virtual void getSobelX(InputArray img, OutputArray out);
-				virtual void getSobelY(InputArray img, OutputArray out);
+				virtual void getSobelX(InputArray &img, OutputArray &out);
+				virtual void getSobelY(InputArray &img, OutputArray &out);
 		};
 
-		void RidgeDetectionFilterImpl::getSobelX(InputArray _img, OutputArray _out){
+		RidgeDetectionFilterImpl::RidgeDetectionFilter(){}
+
+		void RidgeDetectionFilterImpl::getSobelX(InputArray & _img, OutputArray & _out){
 			_out.create(_img.size(), CV_32F);
 			Sobel(_img, _out, CV_32F, 1, 0, 3);
 		}
 
-		void RidgeDetectionFilterImpl::getSobelY(InputArray _img, OutputArray _out){
+		void RidgeDetectionFilterImpl::getSobelY(InputArray & _img, OutputArray & _out){
 			_out.create(_img.size(), CV_32F);
 			Sobel(_img, _out, CV_32F, 0, 1, 3);
+		}
+
+		void RidgeDetectionFilterImpl::getRidges(InputArray & _img, OutputArray & _out){
+			Mat img = _img.getMat();
+			CV_Assert(!img.empty());
+			CV_Assert(img.channels() == 1 || img.channels() == 3);
+
+			if(img.channels() == 3){
+				cvtColor(img, img, COLOR_BGR2GRAY);
+			}
+
+			Mat sbx, sby;
+			getSobelX(img, sbx);
+			getSobelY(img, sby);
+
+			Mat sbxx, sbyy, sbxy;
+			getSobelX(sbx, sbxx);
+			getSobelY(sby, sbyy);
+			getSobelY(sbx, sbxy);
+
+			Mat sb2xx, sb2yy, sb2xy;
+			multiply(sbxx, sbxx, sb2xx);
+			multiply(sbyy, sbyy, sb2yy);
+			multiply(sbxy, sbxy, sb2xy);
+
+			Mat sbxxyy;
+			multiply(sbxx, sbyy, sbxxyy);
+
+			Mat rootex;
+			rootex = (sb2xx +  multiply(sb2xy, Scalar(4))  - multiply(sbxxyy , Scalar(2)) + sb2xy );
+			Mat root;
+			sqrt(rootex, root);
+			Mat ridgexp;
+			ridgexp = ( (sbxx + sbyy) + root );
+			ridgexp /= 2;
+			ridgexp.copyTo(_out);
 		}
 	}
 }
