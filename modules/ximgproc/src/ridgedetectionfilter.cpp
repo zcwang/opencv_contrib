@@ -51,10 +51,10 @@ namespace cv{
 
 		class RidgeDetectionFilterImpl : public RidgeDetectionFilter{
 			public:
-				int ddepth, dx, dy, ksize=3 ;
+				int ddepth=CV_32FC1, dx=0, dy=0, ksize=3 ;
 				double scale=1, delta=0 ;
 				int borderType=BORDER_DEFAULT ;
-
+				// RidgeDetectionFilterImpl(){}
 				RidgeDetectionFilterImpl(int ddepth, int dx, int dy, int ksize = 3, double scale = 1, double delta = 0, int borderType = BORDER_DEFAULT) {
 					CV_Assert((ksize == 1 || ksize == 3 || ksize == 5 || ksize == 7));
 					this->ddepth = ddepth;
@@ -127,7 +127,14 @@ namespace cv{
 			ridgexp /= 2;
 			ridgexp.copyTo(out);
 		}
+
+	    Ptr<RidgeDetectionFilter> RidgeDetectionFilter::create(){
+	        return makePtr<RidgeDetectionFilterImpl>(RidgeDetectionFilterImpl(
+	        		CV_32FC1,  0,  0,  3,1, 0,BORDER_DEFAULT ));
+	    }
+
 	}
+	
 }
 
 

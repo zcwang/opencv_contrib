@@ -61,6 +61,8 @@ namespace cv{
 			 * 
 			 */
 			CV_WRAP virtual void getRidgeFilteredImage(InputArray _img, OutputArray out) = 0;
+
+			CV_WRAP static Ptr<RidgeDetectionFilter> create();
 		};
 	}
 }
