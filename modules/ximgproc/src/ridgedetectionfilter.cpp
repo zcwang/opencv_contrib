@@ -73,12 +73,12 @@ namespace cv{
 
 		void RidgeDetectionFilterImpl::getSobelX(InputArray img, OutputArray out){
 			out.create(img.size(), ddepth);
-			Sobel(img, out, ddepth, 1, 0, ksize);
+			Sobel(img, out, ddepth, 1, 0, ksize, scale, delta, borderType);
 		}
 
 		void RidgeDetectionFilterImpl::getSobelY(InputArray img, OutputArray out){
 			out.create(img.size(), ddepth);
-			Sobel(img, out, ddepth, 0, 1, ksize);
+			Sobel(img, out, ddepth, 0, 1, ksize, scale, delta, borderType);
 		}
 
 		void RidgeDetectionFilterImpl::getRidgeFilteredImage(InputArray _img, OutputArray out){
