@@ -51,7 +51,7 @@ namespace cv{
 
 		class RidgeDetectionFilterImpl : public RidgeDetectionFilter{
 			public:
-				int ddepth=CV_32FC1, dx=0, dy=0, ksize=3 ;
+				int ddepth=CV_32FC1, dx=1, dy=1, ksize=3 ;
 				double scale=1, delta=0 ;
 				int borderType=BORDER_DEFAULT ;
 				// RidgeDetectionFilterImpl(){}
@@ -73,25 +73,27 @@ namespace cv{
 
 		void RidgeDetectionFilterImpl::getSobelX(InputArray img, OutputArray out){
 			out.create(img.size(), ddepth);
-			Sobel(img, out, ddepth, 1, 0, ksize, scale, delta, borderType);
+			Sobel(img, out, ddepth, dx, 0, ksize, scale, delta, borderType);
 		}
 
 		void RidgeDetectionFilterImpl::getSobelY(InputArray img, OutputArray out){
 			out.create(img.size(), ddepth);
-			Sobel(img, out, ddepth, 0, 1, ksize, scale, delta, borderType);
+			Sobel(img, out, ddepth, 0, dy, ksize, scale, delta, borderType);
 		}
 
 		void RidgeDetectionFilterImpl::getRidgeFilteredImage(InputArray _img, OutputArray out){
 			Mat img = _img.getMat();
 			CV_Assert(!img.empty());
 			CV_Assert(img.channels() == 1 || img.channels() == 3);
-			CV_Assert(((img.depth() == CV_8UC1 || img.depth() == CV_8UC3) && (ddepth == -1 || ddepth == CV_16SC1 || ddepth == CV_16SC3 || ddepth == CV_32FC1 || ddepth == CV_32FC3 || ddepth == CV_64FC1 || ddepth == CV_64FC3)));
 
-			CV_Assert(((img.depth() == CV_16SC1 || img.depth() == CV_16SC3 || img.depth() == CV_16UC1 || img.depth() == CV_16UC3) && (ddepth == -1 || ddepth == CV_32FC1 || ddepth == CV_32FC3 || ddepth == CV_64FC1 || ddepth == CV_64FC3)));
+			// commented checks. Sobel already performs such checks
+			// CV_Assert(((img.depth() == CV_8UC1 || img.depth() == CV_8UC3) && (ddepth == -1 || ddepth == CV_16SC1 || ddepth == CV_16SC3 || ddepth == CV_32FC1 || ddepth == CV_32FC3 || ddepth == CV_64FC1 || ddepth == CV_64FC3)));
+
+			// CV_Assert(((img.depth() == CV_16SC1 || img.depth() == CV_16SC3 || img.depth() == CV_16UC1 || img.depth() == CV_16UC3) && (ddepth == -1 || ddepth == CV_32FC1 || ddepth == CV_32FC3 || ddepth == CV_64FC1 || ddepth == CV_64FC3)));
 			
-			CV_Assert(((img.depth() == CV_32FC1 || img.depth() == CV_32FC3 ) && (ddepth == -1 || ddepth == CV_32FC1 || ddepth == CV_32FC3 || ddepth == CV_64FC1 || ddepth == CV_64FC3)));
+			// CV_Assert(((img.depth() == CV_32FC1 || img.depth() == CV_32FC3 ) && (ddepth == -1 || ddepth == CV_32FC1 || ddepth == CV_32FC3 || ddepth == CV_64FC1 || ddepth == CV_64FC3)));
 
-			CV_Assert(((img.depth() == CV_64FC1 || img.depth() == CV_64FC3 ) && (ddepth == -1 ||  ddepth == CV_64FC1 || ddepth == CV_64FC3)));
+			// CV_Assert(((img.depth() == CV_64FC1 || img.depth() == CV_64FC3 ) && (ddepth == -1 ||  ddepth == CV_64FC1 || ddepth == CV_64FC3)));
 
 			// if (! (ksize == 1) && ((dx < 3) && (dy < 3))){
 				// ("Ksize == 1 can support only upto 2nd order derivatives for the sobel detector in RidgeDetectionFilter");
@@ -128,9 +130,8 @@ namespace cv{
 			ridgexp.copyTo(out);
 		}
 
-	    Ptr<RidgeDetectionFilter> RidgeDetectionFilter::create(){
-	        return makePtr<RidgeDetectionFilterImpl>(RidgeDetectionFilterImpl(
-	        		CV_32FC1,  0,  0,  3,1, 0,BORDER_DEFAULT ));
+	    Ptr<RidgeDetectionFilter> RidgeDetectionFilter::create(int ddepth , int dx, int dy, int ksize, double scale , double delta, int borderType){
+	        return makePtr<RidgeDetectionFilterImpl>(RidgeDetectionFilterImpl( ddepth, dx, dy,  ksize,  scale,  delta,  borderType));
 	    }
 
 	}
