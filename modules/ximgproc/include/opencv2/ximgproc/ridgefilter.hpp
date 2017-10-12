@@ -60,8 +60,8 @@ namespace cv{
 			 * @param out 32FC1 image with ridges
 			 * 
 			 */
-			CV_WRAP virtual void getRidges(InputArray &img, OutputArray &out) = 0;
-		}
+			CV_WRAP virtual void getRidges(InputArray img, OutputArray out) = 0;
+		};
 	}
 }
 

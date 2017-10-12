@@ -51,36 +51,36 @@ namespace cv{
 
 		class RidgeDetectionFilterImpl : public RidgeDetectionFilter{
 			public:
-				int ddepth, dx,  dy,  ksize=3;
-				double scale=1,  delta=0;
-				int borderType=BORDER_DEFAULT;
+				int ddepth, dx, dy, ksize=3 ;
+				double scale=1, delta=0 ;
+				int borderType=BORDER_DEFAULT ;
 
-				RidgeDetectionFilterImpl(int ddepth, int dx, int dy, int ksize=3, double scale=1, double delta=0, int borderType=BORDER_DEFAULT) {
-					this.ddepth = ddepth;
-					this.dx = dx;
-					this.dy = dy;
-					this.ksize = ksize;
-					this.scale = scale;
-					this.delta = delta;
-					this.borderType = borderType;
-				};
-				virtual void getRidges(InputArray &img, OutputArray &out);
+				RidgeDetectionFilterImpl(int ddepth, int dx, int dy, int ksize = 3, double scale = 1, double delta = 0, int borderType = BORDER_DEFAULT) {
+					this->ddepth = ddepth;
+					this->dx = dx;
+					this->dy = dy;
+					this->ksize = ksize;
+					this->scale = scale;
+					this->delta = delta;
+					this->borderType = borderType;
+				}
+				virtual void getRidges(InputArray img, OutputArray out);
 			private:
-				virtual void getSobelX(InputArray &img, OutputArray &out);
-				virtual void getSobelY(InputArray &img, OutputArray &out);
+				virtual void getSobelX(InputArray img, OutputArray out);
+				virtual void getSobelY(InputArray img, OutputArray out);
 		};
 
-		void RidgeDetectionFilterImpl::getSobelX(InputArray & _img, OutputArray & _out){
+		void RidgeDetectionFilterImpl::getSobelX(InputArray _img, OutputArray _out){
 			_out.create(_img.size(), CV_32F);
 			Sobel(_img, _out, CV_32F, 1, 0, 3);
 		}
 
-		void RidgeDetectionFilterImpl::getSobelY(InputArray & _img, OutputArray & _out){
+		void RidgeDetectionFilterImpl::getSobelY(InputArray _img, OutputArray _out){
 			_out.create(_img.size(), CV_32F);
 			Sobel(_img, _out, CV_32F, 0, 1, 3);
 		}
 
-		void RidgeDetectionFilterImpl::getRidges(InputArray & _img, OutputArray & _out){
+		void RidgeDetectionFilterImpl::getRidges(InputArray _img, OutputArray _out){
 			Mat img = _img.getMat();
 			CV_Assert(!img.empty());
 			CV_Assert(img.channels() == 1 || img.channels() == 3);
@@ -107,7 +107,7 @@ namespace cv{
 			multiply(sbxx, sbyy, sbxxyy);
 
 			Mat rootex;
-			rootex = (sb2xx +  multiply(sb2xy, Scalar(4))  - multiply(sbxxyy , Scalar(2)) + sb2xy );
+			rootex = (sb2xx +  (sb2xy + sb2xy + sb2xy + sb2xy)  - (sbxxyy + sbxxyy) + sb2xy );
 			Mat root;
 			sqrt(rootex, root);
 			Mat ridgexp;
