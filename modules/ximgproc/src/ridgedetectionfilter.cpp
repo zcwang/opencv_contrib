@@ -48,16 +48,27 @@
 
 namespace cv{
 	namespace ximgproc{
+
 		class RidgeDetectionFilterImpl : public RidgeDetectionFilter{
 			public:
-				RidgeDetectionFilter();
+				int ddepth, dx,  dy,  ksize=3;
+				double scale=1,  delta=0;
+				int borderType=BORDER_DEFAULT;
+
+				RidgeDetectionFilterImpl(int ddepth, int dx, int dy, int ksize=3, double scale=1, double delta=0, int borderType=BORDER_DEFAULT) {
+					this.ddepth = ddepth;
+					this.dx = dx;
+					this.dy = dy;
+					this.ksize = ksize;
+					this.scale = scale;
+					this.delta = delta;
+					this.borderType = borderType;
+				};
 				virtual void getRidges(InputArray &img, OutputArray &out);
 			private:
 				virtual void getSobelX(InputArray &img, OutputArray &out);
 				virtual void getSobelY(InputArray &img, OutputArray &out);
 		};
-
-		RidgeDetectionFilterImpl::RidgeDetectionFilter(){}
 
 		void RidgeDetectionFilterImpl::getSobelX(InputArray & _img, OutputArray & _out){
 			_out.create(_img.size(), CV_32F);
