@@ -56,6 +56,7 @@ namespace cv{
 				int borderType=BORDER_DEFAULT ;
 
 				RidgeDetectionFilterImpl(int ddepth, int dx, int dy, int ksize = 3, double scale = 1, double delta = 0, int borderType = BORDER_DEFAULT) {
+					CV_Assert((ksize == 1 || ksize == 3 || ksize == 5 || ksize == 7));
 					this->ddepth = ddepth;
 					this->dx = dx;
 					this->dy = dy;
@@ -64,26 +65,37 @@ namespace cv{
 					this->delta = delta;
 					this->borderType = borderType;
 				}
-				virtual void getRidges(InputArray img, OutputArray out);
+				virtual void getRidgeFilteredImage(InputArray _img, OutputArray out);
 			private:
 				virtual void getSobelX(InputArray img, OutputArray out);
 				virtual void getSobelY(InputArray img, OutputArray out);
 		};
 
-		void RidgeDetectionFilterImpl::getSobelX(InputArray _img, OutputArray _out){
-			_out.create(_img.size(), CV_32F);
-			Sobel(_img, _out, CV_32F, 1, 0, 3);
+		void RidgeDetectionFilterImpl::getSobelX(InputArray img, OutputArray out){
+			out.create(img.size(), ddepth);
+			Sobel(img, out, ddepth, 1, 0, ksize);
 		}
 
-		void RidgeDetectionFilterImpl::getSobelY(InputArray _img, OutputArray _out){
-			_out.create(_img.size(), CV_32F);
-			Sobel(_img, _out, CV_32F, 0, 1, 3);
+		void RidgeDetectionFilterImpl::getSobelY(InputArray img, OutputArray out){
+			out.create(img.size(), ddepth);
+			Sobel(img, out, ddepth, 0, 1, ksize);
 		}
 
-		void RidgeDetectionFilterImpl::getRidges(InputArray _img, OutputArray _out){
+		void RidgeDetectionFilterImpl::getRidgeFilteredImage(InputArray _img, OutputArray out){
 			Mat img = _img.getMat();
 			CV_Assert(!img.empty());
 			CV_Assert(img.channels() == 1 || img.channels() == 3);
+			CV_Assert(((img.depth() == CV_8UC1 || img.depth() == CV_8UC3) && (ddepth == -1 || ddepth == CV_16SC1 || ddepth == CV_16SC3 || ddepth == CV_32FC1 || ddepth == CV_32FC3 || ddepth == CV_64FC1 || ddepth == CV_64FC3)));
+
+			CV_Assert(((img.depth() == CV_16SC1 || img.depth() == CV_16SC3 || img.depth() == CV_16UC1 || img.depth() == CV_16UC3) && (ddepth == -1 || ddepth == CV_32FC1 || ddepth == CV_32FC3 || ddepth == CV_64FC1 || ddepth == CV_64FC3)));
+			
+			CV_Assert(((img.depth() == CV_32FC1 || img.depth() == CV_32FC3 ) && (ddepth == -1 || ddepth == CV_32FC1 || ddepth == CV_32FC3 || ddepth == CV_64FC1 || ddepth == CV_64FC3)));
+
+			CV_Assert(((img.depth() == CV_64FC1 || img.depth() == CV_64FC3 ) && (ddepth == -1 ||  ddepth == CV_64FC1 || ddepth == CV_64FC3)));
+
+			// if (! (ksize == 1) && ((dx < 3) && (dy < 3))){
+				// ("Ksize == 1 can support only upto 2nd order derivatives for the sobel detector in RidgeDetectionFilter");
+			// }
 
 			if(img.channels() == 3){
 				cvtColor(img, img, COLOR_BGR2GRAY);
@@ -113,7 +125,7 @@ namespace cv{
 			Mat ridgexp;
 			ridgexp = ( (sbxx + sbyy) + root );
 			ridgexp /= 2;
-			ridgexp.copyTo(_out);
+			ridgexp.copyTo(out);
 		}
 	}
 }
