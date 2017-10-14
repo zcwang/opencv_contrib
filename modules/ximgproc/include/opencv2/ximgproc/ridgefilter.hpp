@@ -57,7 +57,7 @@ namespace cv{
 			/**
 			 * @brief apply ridge detection filter.
 			 * @param img inupt image. Should be gray or BGR
-			 * @param out 32FC1 image with ridges
+			 * @param out 32FC1  (Other Mat types are supported. Compatibility same as cv::Sobel src.type() ) image with ridges
 			 * 
 			 */
 			CV_WRAP virtual void getRidgeFilteredImage(InputArray _img, OutputArray out) = 0;
