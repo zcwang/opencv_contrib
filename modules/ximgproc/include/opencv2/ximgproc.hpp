@@ -52,6 +52,8 @@
 #include "ximgproc/fast_line_detector.hpp"
 #include "ximgproc/deriche_filter.hpp"
 #include "ximgproc/peilin.hpp"
+#include "ximgproc/ridgefilter.hpp"
+
 
 /** @defgroup ximgproc Extended Image Processing
   @{

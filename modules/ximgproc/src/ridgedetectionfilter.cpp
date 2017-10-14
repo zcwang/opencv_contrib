@@ -33,13 +33,6 @@
  *  or tort(including negligence or otherwise) arising in any way out of
  *  the use of this software, even if advised of the possibility of such damage.
  */
-/*********************************************************
-*				Ridge Detection filter
-*This code implements a ridge detection filter based on hessian matrix
-* Authors : Venkatesh Vijaykumar, Kushal Vyas
-* Ref:  @stackoverflow link
-*
-*/
 
 #include "precomp.hpp"
 #include "opencv2/imgproc.hpp"
