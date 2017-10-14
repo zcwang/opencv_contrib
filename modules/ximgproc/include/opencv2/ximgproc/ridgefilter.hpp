@@ -40,6 +40,23 @@
 //
 //M*/
 
+/*
+	Ridge Detection Filter.
+
+	References and Useful links:
+	1. [Ridge filter Mathematica ](http://reference.wolfram.com/language/ref/RidgeFilter.html)
+
+	2. [An Unbiased Detector of Curvilinear Structures](dl.acm.org/citation.cfm?id=279239)
+
+	3. [Properties of Ridges and Cores for Two-Dimensional Images](http://www.springerlink.com/content/l6564431145n1880/)
+
+	4. Mathematical insight at : [@nikie](https://dsp.stackexchange.com/users/291/nikie) [article on segmentation of veins in leaves](https://dsp.stackexchange.com/questions/1714/best-way-of-segmenting-veins-in-leaves)
+
+	OpenCV port by : Kushal Vyas (@kushalvyas), Venkatesh Vijaykumar(@venkateshvijaykumar)
+
+ */
+
+
 #ifndef __OPENCV_XIMGPROC_RIDGEFILTER_HPP__
 #define __OPENCV_XIMGPROC_RIDGEFILTER_HPP__
 
@@ -49,20 +66,35 @@ namespace cv{
 	namespace ximgproc{
 		//! @addtogroup ximgproc_filters
 		//! @{
-		//! 	add ref link here
-		//! }
 		
 		class CV_EXPORTS_W RidgeDetectionFilter : public Algorithm{
+			/**
+			 *
+			 *	@brief	Applies Ridge Detection Filter to an input image. Implements Ridge detection similar to the one in Mathematica using the eigen values from the Hessian Matrix of the input image. For more information refer references.
+			 *	
+			 */
 		public:
 			/**
-			 * @brief apply ridge detection filter.
-			 * @param img inupt image. Should be gray or BGR
-			 * @param out 32FC1 image with ridges
+			 * @brief Create pointer to the Ridge detection filter.
+			 * @param ddepth (int). Specifies output image depth. defualt is CV_32FC1
+			 * @param dx. Order of derivative x
+			 * @param dy. Order of derivative y.
+			 * @param ksize. sobel kernel size
+			 * @param scale (optional). scale value for derivative values
+			 * @param delta (optional) . optional bias added to output
+			 * @param borderType. pixel extrapolation method. (refer https://docs.opencv.org/2.4/modules/imgproc/doc/filtering.html?highlight=sobel#sobel)
+			 * 
+			 */
+
+			CV_WRAP static Ptr<RidgeDetectionFilter> create(int ddepth = CV_32FC1, int dx=1, int dy=1, int ksize = 3, double scale = 1, double delta = 0, int borderType = BORDER_DEFAULT);
+
+			/**
+			 * @brief Apply Ridge detection filter on input image.
+			 * @param img. 	 Source cv::Mat types as supported by cv::Sobel. img can be 1-Channel or 3-Channels.
+			 * @param out.	Output image with ridges. 
 			 * 
 			 */
 			CV_WRAP virtual void getRidgeFilteredImage(InputArray _img, OutputArray out) = 0;
-
-			CV_WRAP static Ptr<RidgeDetectionFilter> create(int ddepth = CV_32FC1, int dx=1, int dy=1, int ksize = 3, double scale = 1, double delta = 0, int borderType = BORDER_DEFAULT);
 		};
 	}
 }
