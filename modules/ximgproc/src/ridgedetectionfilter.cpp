@@ -76,7 +76,6 @@ namespace cv{
 
 		void RidgeDetectionFilterImpl::getRidgeFilteredImage(InputArray _img, OutputArray out){
 			Mat img = _img.getMat();
-			CV_Assert(!img.empty());
 			CV_Assert(img.channels() == 1 || img.channels() == 3);
 
 			// commented checks. Sobel already performs such checks
