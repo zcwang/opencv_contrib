@@ -53,13 +53,11 @@ namespace cvtest{
 	PERF_TEST_P(RidgeDetectionFilterPerfTest, perf, Combine(DDEPTH::all(), KSIZE::all())){
 		
 
-		String openCVExtraDir =  "/home/kushal/opencv/MY_OPENCV_CONTRIBUTION/opencv_extra/testdata/";
+		String openCVExtraDir = cvtest::TS::ptr()->get_data_path();
 		String srcImgPath = "cv/ximgproc/sources/01.png";
-		String refPath = "/home/kushal/opencv/MY_OPENCV_CONTRIBUTION/BUILD_RIDGEFILTER/ridge_filter_test_ref/01.png";
 
 		Mat src = imread(openCVExtraDir + srcImgPath);
 		Mat out;
-		// Mat ref = imread(refPath);
 
 		RDFParams params = GetParam();
 		int ddepth = get<0>(params);
