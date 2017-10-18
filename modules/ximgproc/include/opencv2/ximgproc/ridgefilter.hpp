@@ -17,7 +17,7 @@ namespace ximgproc{
     //! @{
     class CV_EXPORTS_W RidgeDetectionFilter : public Algorithm{
     /**
-    @brief  Applies Ridge Detection Filter to an input image. Implements Ridge detection similar to the one in [Mathematica](http://reference.wolfram.com/language/ref/RidgeFilter.html) using the eigen values from the Hessian Matrix of the input image using Sobel Derivatives. Additional refinement can be done using Skeletonization and Binarization.
+    @brief  Applies Ridge Detection Filter to an input image. Implements Ridge detection similar to the one in [Mathematica](http://reference.wolfram.com/language/ref/RidgeFilter.html) using the eigen values from the Hessian Matrix of the input image using Sobel Derivatives.Additional refinement can be done using Skeletonization and Binarization.
     */
     public:
     /**
@@ -29,7 +29,7 @@ namespace ximgproc{
     @param out_dtype Converted format for output, default is CV_8UC1
     @param scale Optional scale value for derivative values, default is 1
     @param delta  Optional bias added to output, default is 0
-    @param borderType Pixel extrapolation method, default is BORDER_DEFAULT 
+    @param borderType Pixel extrapolation method, default is BORDER_DEFAULT
     @see Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
     */
     CV_WRAP static Ptr<RidgeDetectionFilter> create(int ddepth = CV_32FC1, int dx=1, int dy=1, int ksize = 3, int out_dtype=CV_8UC1, double scale = 1, double delta = 0, int borderType = BORDER_DEFAULT);
@@ -42,5 +42,4 @@ namespace ximgproc{
 };
 }
 }
-
 #endif
