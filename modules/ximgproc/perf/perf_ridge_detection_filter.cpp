@@ -36,6 +36,7 @@
 
 #include "perf_precomp.hpp"
 
+
 namespace cvtest{
 	using std::tr1::tuple;
 	using std::tr1::get;
@@ -44,29 +45,25 @@ namespace cvtest{
 	using namespace cv;
 	using namespace cv::ximgproc;
 
-	CV_ENUM(DDEPTH, CV_8UC1, CV_8UC3, CV_32FC1, CV_32FC3);
-	CV_ENUM(KSIZE, 1, 3, 5, 7);
-	typedef tuple<DDEPTH, KSIZE> RDFParams;
+	CV_ENUM(DDEPTH, CV_32FC1);
+	CV_ENUM(KSIZE, 3);
+	typedef tuple<DDEPTH, KSIZE, Size> RDFParams;
 
 	typedef TestBaseWithParam<RDFParams> RidgeDetectionFilterPerfTest;
 
-	PERF_TEST_P(RidgeDetectionFilterPerfTest, perf, Combine(DDEPTH::all(), KSIZE::all())){
-		
-
-		String openCVExtraDir = cvtest::TS::ptr()->get_data_path();
-		String srcImgPath = "cv/ximgproc/sources/01.png";
-
-		Mat src = imread(openCVExtraDir + srcImgPath);
-		Mat out;
-
+	PERF_TEST_P(RidgeDetectionFilterPerfTest, perf, Combine(DDEPTH::all(), KSIZE::all(), SZ_TYPICAL)){
 		RDFParams params = GetParam();
-		int ddepth = get<0>(params);
-		int ksize = get<0>(params);
+		int _ddepth = get<0>(params);
+		int _ksize = get<1>(params);
+		Size sz = get<2>(params);
+
+		Mat src(sz, _ddepth);
+		Mat out(sz, src.type());
 
 		declare.in(src).out(out).tbb_threads(cv::getNumberOfCPUs());
+		cv::setNumThreads(cv::getNumberOfCPUs());
 		TEST_CYCLE_N(1){
-			Ptr<RidgeDetectionFilter> rdf = RidgeDetectionFilter::create( ddepth=ddepth, ksize=ksize);
-
+			Ptr<RidgeDetectionFilter> rdf = RidgeDetectionFilter::create(_ddepth,1, 1, _ksize);
 			rdf->getRidgeFilteredImage(src, out);
 		}
 
