@@ -83,5 +83,5 @@ namespace cv{
         Ptr<RidgeDetectionFilter> RidgeDetectionFilter::create(int ddepth , int dx, int dy, int ksize, int out_dtype, double scale , double delta, int borderType){
             return makePtr<RidgeDetectionFilterImpl>(RidgeDetectionFilterImpl( ddepth, dx, dy,  ksize, out_dtype , scale,  delta,  borderType));
         }
-    }   
+}
 }

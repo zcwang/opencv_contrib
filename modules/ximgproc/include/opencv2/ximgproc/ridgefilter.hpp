@@ -36,7 +36,7 @@ namespace ximgproc{
     /**
     @brief Apply Ridge detection filter on input image.
     @param _img InputArray as supported by Sobel. img can be 1-Channel or 3-Channels.
-    @param out OutputAray of structure as RidgeDetectionFilter::ddepth. Output image with ridges.  
+    @param out OutputAray of structure as RidgeDetectionFilter::ddepth. Output image with ridges.
     */
     CV_WRAP virtual void getRidgeFilteredImage(InputArray _img, OutputArray out) = 0;
 };
