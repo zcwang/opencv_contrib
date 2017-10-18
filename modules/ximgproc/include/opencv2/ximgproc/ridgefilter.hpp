@@ -23,21 +23,20 @@ namespace ximgproc{
     /**
     @brief Create pointer to the Ridge detection filter.
     @param ddepth  Specifies output image depth. Defualt is CV_32FC1
-    @param dx Order of derivative x. Default is 1
-    @param dy  Order of derivative y. Default is 1
-    @param ksize Sobel kernel size . Default is 3
-    @param out_dtype Converted format for output. Default is CV_8UC1
-    @param scale . scale value for derivative values . Default is 1
-    @param delta  . optional bias added to output. Default is 0
-    @param borderType. pixel extrapolation method. Default is BORDER_DEFAULT 
+    @param dx Order of derivative x, default is 1
+    @param dy  Order of derivative y, default is 1
+    @param ksize Sobel kernel size , default is 3
+    @param out_dtype Converted format for output, default is CV_8UC1
+    @param scale Optional scale value for derivative values, default is 1
+    @param delta  Optional bias added to output, default is 0
+    @param borderType Pixel extrapolation method, default is BORDER_DEFAULT 
     @see Sobel, threshold, getStructuringElement, morphologyEx.( for additional refinement)
     */
-
     CV_WRAP static Ptr<RidgeDetectionFilter> create(int ddepth = CV_32FC1, int dx=1, int dy=1, int ksize = 3, int out_dtype=CV_8UC1, double scale = 1, double delta = 0, int borderType = BORDER_DEFAULT);
     /**
     @brief Apply Ridge detection filter on input image.
-    @param img. InputArray as supported by Sobel. img can be 1-Channel or 3-Channels.
-    @param out. OutputAray of structure as RidgeDetectionFilter::ddepth. Output image with ridges.  
+    @param _img InputArray as supported by Sobel. img can be 1-Channel or 3-Channels.
+    @param out OutputAray of structure as RidgeDetectionFilter::ddepth. Output image with ridges.  
     */
     CV_WRAP virtual void getRidgeFilteredImage(InputArray _img, OutputArray out) = 0;
 };
