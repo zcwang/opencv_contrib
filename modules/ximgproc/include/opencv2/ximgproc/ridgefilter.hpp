@@ -40,6 +40,6 @@ namespace ximgproc{
     */
     CV_WRAP virtual void getRidgeFilteredImage(InputArray _img, OutputArray out) = 0;
 };
-}
-}
+//! @}
+}} // namespace cv{ namespace ximgproc { 
 #endif
