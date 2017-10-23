@@ -15,10 +15,10 @@ namespace cv{
 namespace ximgproc{
     //! @addtogroup ximgproc_filters
     //! @{
-    class CV_EXPORTS_W RidgeDetectionFilter : public Algorithm{
     /**
     @brief  Applies Ridge Detection Filter to an input image. Implements Ridge detection similar to the one in [Mathematica](http://reference.wolfram.com/language/ref/RidgeFilter.html) using the eigen values from the Hessian Matrix of the input image using Sobel Derivatives.Additional refinement can be done using Skeletonization and Binarization.
     */
+    class CV_EXPORTS_W RidgeDetectionFilter : public Algorithm{
     public:
     /**
     @brief Create pointer to the Ridge detection filter.
