@@ -8,9 +8,8 @@
 
 
 namespace cv{
-    namespace ximgproc{
-
-        class RidgeDetectionFilterImpl : public RidgeDetectionFilter{
+namespace ximgproc{
+class RidgeDetectionFilterImpl : public RidgeDetectionFilter{
             public:
                 int _ddepth, _dx, _dy, _ksize;
                 double _scale, _delta;
@@ -76,7 +75,6 @@ namespace cv{
             Mat ridgexp;
             ridgexp = ( (sbxx + sbyy) + root );
             ridgexp /= 2;
-            // ridgexp.copyTo(out);
             ridgexp.convertTo(out, _out_dtype);
         }
 
