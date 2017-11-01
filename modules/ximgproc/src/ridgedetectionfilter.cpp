@@ -28,20 +28,7 @@ class RidgeDetectionFilterImpl : public RidgeDetectionFilter{
                     _out_dtype = out_dtype;
                 }
                 virtual void getRidgeFilteredImage(InputArray _img, OutputArray out);
-            private:
-                virtual void getSobelX(InputArray img, OutputArray out);
-                virtual void getSobelY(InputArray img, OutputArray out);
         };
-
-        void RidgeDetectionFilterImpl::getSobelX(InputArray img, OutputArray out){
-            out.create(img.size(), _ddepth);
-            Sobel(img, out, _ddepth, _dx, 0, _ksize, _scale, _delta, _borderType);
-        }
-
-        void RidgeDetectionFilterImpl::getSobelY(InputArray img, OutputArray out){
-            out.create(img.size(), _ddepth);
-            Sobel(img, out, _ddepth, 0, _dy, _ksize, _scale, _delta, _borderType);
-        }
 
         void RidgeDetectionFilterImpl::getRidgeFilteredImage(InputArray _img, OutputArray out){
             Mat img = _img.getMat();
@@ -52,13 +39,13 @@ class RidgeDetectionFilterImpl : public RidgeDetectionFilter{
             }
 
             Mat sbx, sby;
-            getSobelX(img, sbx);
-            getSobelY(img, sby);
+            Sobel(img, sbx, _ddepth, _dx, 0, _ksize, _scale, _delta, _borderType);
+            Sobel(img, sby, _ddepth, 0, _dy, _ksize, _scale, _delta, _borderType);
 
             Mat sbxx, sbyy, sbxy;
-            getSobelX(sbx, sbxx);
-            getSobelY(sby, sbyy);
-            getSobelY(sbx, sbxy);
+            Sobel(sbx, sbxx, _ddepth, _dx, 0, _ksize, _scale, _delta, _borderType);
+            Sobel(sby, sbyy, _ddepth, 0, _dy, _ksize, _scale, _delta, _borderType);
+            Sobel(sbx, sbxy, _ddepth, 0, _dy, _ksize, _scale, _delta, _borderType);
 
             Mat sb2xx, sb2yy, sb2xy;
             multiply(sbxx, sbxx, sb2xx);
@@ -74,8 +61,7 @@ class RidgeDetectionFilterImpl : public RidgeDetectionFilter{
             sqrt(rootex, root);
             Mat ridgexp;
             ridgexp = ( (sbxx + sbyy) + root );
-            ridgexp /= 2;
-            ridgexp.convertTo(out, _out_dtype);
+            ridgexp.convertTo(out, _out_dtype, 0.5);
         }
 
         Ptr<RidgeDetectionFilter> RidgeDetectionFilter::create(int ddepth , int dx, int dy, int ksize, int out_dtype, double scale , double delta, int borderType){
